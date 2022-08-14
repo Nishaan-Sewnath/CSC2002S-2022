@@ -210,7 +210,7 @@ public class MedianFilterSerial {
 
 
         }
-
+        
  
         //set the new buffered image to the newly processed array
         BufferedImage res = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);

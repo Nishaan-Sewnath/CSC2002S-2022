@@ -206,10 +206,24 @@ public class MeanFilterParallel extends RecursiveAction{
         int [] src = bi.getRGB(0, 0, bi.getWidth(), bi.getHeight(), null, 0, bi.getWidth());
         int [] dst = new int[src.length];
 
+        //displays system info
+        int proc  = Runtime.getRuntime().availableProcessors();
+        System.out.println(proc + " processor(s) avaiable");
+
+
         //invokes the actual parallel part of the program
         MeanFilterParallel par = new MeanFilterParallel(0, src.length, filter, src, dst);
         ForkJoinPool pool = new ForkJoinPool();
+
+        //starts the timer
+        tick();
+        //does the work
         pool.invoke(par);
+        //stops the timer
+        float timed = tock();
+
+        //displays the time the main work took to run
+        System.out.println("System took: " + timed + " seconds to run.");
 
 
         BufferedImage fl = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);

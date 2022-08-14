@@ -219,12 +219,26 @@ public class MedianFilterParallel extends RecursiveAction{
         int [] src = bi.getRGB(0, 0, bi.getWidth(), bi.getHeight(), null, 0, bi.getWidth());
         int [] dst = new int[src.length];
 
+        //displays system info
+        int proc  = Runtime.getRuntime().availableProcessors();
+        System.out.println(proc + " processor(s) avaiable");
+
+
         //Declaraction of the constructor
         MedianFilterParallel par = new MedianFilterParallel(0, src.length, filter, src, dst);
 
         //Declaring and invoking the forkjoinPool
         ForkJoinPool pool = new ForkJoinPool();
+
+        //Starts timer
+        tick();
+        //does the work
         pool.invoke(par);
+        //Stops the timer
+        float timed = tock();
+
+        //displays the time the main work took to run
+        System.out.println("System took: " + timed + " seconds to run.");
 
         //initializing a new buffered Image and storing the new processed data in it
         BufferedImage fl = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
