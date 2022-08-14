@@ -223,7 +223,7 @@ public class MeanFilterParallel extends RecursiveAction{
         float timed = tock();
 
         //displays the time the main work took to run
-        System.out.println("System took: " + timed + " seconds to run.");
+        System.out.println("System took: " + timed + " milliseconds to run.");
 
 
         BufferedImage fl = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);

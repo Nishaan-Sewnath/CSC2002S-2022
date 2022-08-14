@@ -238,7 +238,7 @@ public class MedianFilterParallel extends RecursiveAction{
         float timed = tock();
 
         //displays the time the main work took to run
-        System.out.println("System took: " + timed + " seconds to run.");
+        System.out.println("System took: " + timed + " milliseconds to run.");
 
         //initializing a new buffered Image and storing the new processed data in it
         BufferedImage fl = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_RGB);
