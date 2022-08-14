@@ -109,7 +109,6 @@ public class MeanFilterParallel extends RecursiveAction{
 
         for(int x = lo; x < hi+lo; x++){
 
-            float a = 0; 
             float r=0; 
             float g=0; 
             float b=0;

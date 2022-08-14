@@ -49,22 +49,25 @@ public class MedianFilterSerial {
 
         
         int length = blk.length;
-        float resultR = 0;
-        float resultG = 0;
-        float resultB = 0;
+        float []resultR = new float[length];
+        float []resultG = new float[length];
+        float []resultB = new float[length];
         int rp = 0;
         
-        Arrays.sort(blk);
+        for(int i = 0; i< length; i++){
 
-        int n = blk[(length-1)/2];
-        
-        
-        resultR = (float)((n&0x00FF0000)>>16);
-        resultG = (float)((n&0x0000FF00)>>8);
-        resultB = (float)((n&0x000000FF)>>0);
+            resultR[i] = (float)((blk[i]&0x00FF0000)>>16);
+            resultG[i] = (float)((blk[i]&0x0000FF00)>>8);
+            resultB[i] = (float)((blk[i]&0x000000FF)>>0);
+
+        }
+
+        Arrays.sort(resultR);
+        Arrays.sort(resultG);
+        Arrays.sort(resultB);
         
 
-        rp = (((int)resultR<<16)|((int)resultG<<8)|((int)resultB<<0));
+        rp = (((int)resultR[(length-1)/2]<<16)|((int)resultG[(length-1)/2]<<8)|((int)resultB[(length-1)/2]<<0));
       
 
         return rp;
@@ -159,7 +162,7 @@ public class MedianFilterSerial {
                             
                             block[count1] = src[j];
                             
-                                
+                            
                             count1++;
                             //to ensure no index out of bounds errors
                             if(count1>(filter*filter)-1){
@@ -175,6 +178,7 @@ public class MedianFilterSerial {
 
                         }
 
+                        
                         
                         
                     

@@ -7,7 +7,6 @@ ${BINDIR}/%.class:${SRCDIR}/%.java
 	javac $< -cp ${BINDIR} -d ${BINDIR}
 
 CLASSES=MedianFilterParallel.class MedianFilterSerial.class MeanFilterParallel.class MeanFilterSerial.class
-
 CLASS_FILES=${CLASSES:%.class=${BINDIR}/%.class}
 
 default: ${CLASS_FILES}
